@@ -146,11 +146,8 @@ include 'includes/connect.php';
                             <div class="collapsible-body">
                                 <ul>
                                 <?php
-                                      $sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
-                                      while($row = mysqli_fetch_array($sql)){
-                                                        echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
-                                                        </li>';
-                                      }
+                                     echo '<li><a href="#">Table Reservation</a></li>';
+                                     echo '<li><a href="#">Venue Reservation</a></li>';
                                 ?>
                                 </ul>
                             </div>
