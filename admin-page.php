@@ -133,34 +133,58 @@ include 'includes/connect.php';
                 </div>
             </div>
             </li>
+            <!-- Food Menu -->
             <li class="bold active"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
             </li>
-                <li class="no-padding">
+            <!-- Table Menu -->
+            <li class="bold"><a href="tables.php" class="waves-effect waves-cyan"><i class="mdi-content-add"></i> Tables Menu</a>
+            </li>		
+            <!-- Reservations -->
+            <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Reservations</a>
                             <div class="collapsible-body">
                                 <ul>
-								<li><a href="all-orders.php">All Orders</a>
-                                </li>
-								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
-									while($row = mysqli_fetch_array($sql)){
-                                    echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
-                                    </li>';
-									}
-									?>
+                                <?php
+                                      $sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
+                                      while($row = mysqli_fetch_array($sql)){
+                                                        echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                                        </li>';
+                                      }
+                                ?>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                 </li>
+                <!-- Orders -->
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="all-orders.php">All Orders</a>
+                                    </li>
+                                    <?php
+                                      $sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
+                                      while($row = mysqli_fetch_array($sql)){
+                                                        echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                                        </li>';
+                                      }
+                                    ?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Tickets -->
                  <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Tickets</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="all-tickets.php">All Tickets</a>
-                                </li>
+                </li>
 								<?php
 									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
 									while($row = mysqli_fetch_array($sql)){
@@ -172,9 +196,10 @@ include 'includes/connect.php';
                             </div>
                         </li>
                     </ul>
-                </li>			
+                </li>
+              <!-- Users -->			
             <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
-            </li>				
+            </li>		
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>

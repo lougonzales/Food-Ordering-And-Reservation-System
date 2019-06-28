@@ -136,7 +136,9 @@ include 'includes/wallet.php';
                 </div>
             </div>
             </li>
-            <li class="bold active"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Order Food</a>
+            <li class="bold active"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
+            </li>
+            <li class="bold active"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
