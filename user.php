@@ -61,10 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item">  
-                       <a class="btn btn-primary btn-lg active" href="user_createaccount.php" role="button" aria-pressed="true">Create Your Account</a>
-                    </li> 
+                    </li>> 
 
                 </ul>
             </div>
