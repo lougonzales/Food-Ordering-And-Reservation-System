@@ -133,13 +133,7 @@ include 'includes/connect.php';
                 </div>
             </div>
             </li>
-<<<<<<< HEAD
             <!-- Food Menu -->
-=======
-            <li class="bold"><a href="dashboard.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Dashboard</a>
-            </li>
-            </li>
->>>>>>> 721ae9cc8e4a10d9e89375182f9eaa7cf666640a
             <li class="bold active"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
             </li>
             <!-- Table Menu -->
@@ -189,13 +183,8 @@ include 'includes/connect.php';
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Feedback</a>
                             <div class="collapsible-body">
                                 <ul>
-<<<<<<< HEAD
 								<li><a href="all-tickets.php">All Tickets</a>
                 </li>
-=======
-								<li><a href="all-tickets.php">All Feedback</a>
-                                </li>
->>>>>>> 721ae9cc8e4a10d9e89375182f9eaa7cf666640a
 								<?php
 									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
 									while($row = mysqli_fetch_array($sql)){
