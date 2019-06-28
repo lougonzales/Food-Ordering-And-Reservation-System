@@ -103,7 +103,7 @@ $username = $row['username'];
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="pic/banner.jpg" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>				
                 </div>
             </nav>
@@ -160,12 +160,18 @@ $username = $row['username'];
                         </li>
                     </ul>
                 </li>
+                </li>
+                <li class="bold"><a href="table.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Table Reservation</a>
+                </li>
+                </li>
+                <li class="bold"><a href="venue.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Venue Reservation</a>
+                </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Tickets</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Feedback</a>
                             <div class="collapsible-body">
                                 <ul>
-								<li><a href="tickets.php">All Tickets</a>
+								<li><a href="tickets.php">All Feedback</a>
                                 </li>
 								<?php
 									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets WHERE poster_id = $user_id AND not deleted;");
@@ -296,8 +302,8 @@ $username = $row['username'];
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span>Copyright © 2019 <a class="grey-text text-lighten-4" href="#" target="_blank">Avengirls</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Avengirls Software Solutions</a></span>
         </div>
     </div>
   </footer>
