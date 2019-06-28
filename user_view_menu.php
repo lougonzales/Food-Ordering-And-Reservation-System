@@ -270,7 +270,7 @@
                     <div class="card">
                         <img src="menu\sprite.png"class="card-img-top mx-auto" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">MEAL B</h5>
+                            <h5 class="card-title">Php 28.00</h5>
                                <p class="card-text">Sprite (8oz)/(kasalo size)</p>
                                   
                         </div> 
@@ -280,7 +280,7 @@
                     <div class="card">
                         <img src="menu\coke.jpg"class="card-img-top mx-auto" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">MEAL B</h5>
+                            <h5 class="card-title">Php 28.00</h5>
                                <p class="card-text">Coke (8oz)/(kasalo size)</p>
                                   
                         </div> 
@@ -290,7 +290,7 @@
                     <div class="card">
                         <img src="menu\royal.jpg"class="card-img-top mx-auto" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">MEAL B</h5>
+                            <h5 class="card-title">Php 28.00</h5>
                             <p class="card-text">Royal (8oz)/(kasalo size)</p>
                               
                         </div>
