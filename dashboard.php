@@ -1,5 +1,7 @@
 <?php
 include 'includes/connect.php';
+
+
 	if($_SESSION['admin_sid']==session_id())
 	{
 		?>
@@ -11,7 +13,7 @@ include 'includes/connect.php';
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>All orders</title>
+  <title>Food Menu</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -28,10 +30,71 @@ include 'includes/connect.php';
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <!-- Dashboard Design -->
+  <link href="css/dashboard.css"  rel="stylesheet" >
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
+<link href="css/metisMenu.min.css" rel="stylesheet">
+
+<!-- Timeline CSS -->
+<link href="css/timeline.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/startmin.css" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link href="css/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
- 
+  <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+     <style type="text/css">
+  .input-field div.error{
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color:#FF4081;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  .input-field label.active{
+      width:100%;
+  }
+  .left-alert input[type=text] + label:after, 
+  .left-alert input[type=password] + label:after, 
+  .left-alert input[type=email] + label:after, 
+  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=time] + label:after,
+  .left-alert input[type=date] + label:after, 
+  .left-alert input[type=datetime-local] + label:after, 
+  .left-alert input[type=tel] + label:after, 
+  .left-alert input[type=number] + label:after, 
+  .left-alert input[type=search] + label:after, 
+  .left-alert textarea.materialize-textarea + label:after{
+      left:0px;
+  }
+  .right-alert input[type=text] + label:after, 
+  .right-alert input[type=password] + label:after, 
+  .right-alert input[type=email] + label:after, 
+  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=time] + label:after,
+  .right-alert input[type=date] + label:after, 
+  .right-alert input[type=datetime-local] + label:after, 
+  .right-alert input[type=tel] + label:after, 
+  .right-alert input[type=number] + label:after, 
+  .right-alert input[type=search] + label:after, 
+  .right-alert textarea.materialize-textarea + label:after{
+      right:70px;
+  }
+  </style> 
 </head>
 
 <body>
@@ -76,7 +139,7 @@ include 'includes/connect.php';
                 <div class="col col s4 m4 l4">
                     <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
                 </div>
-				<div class="col col s8 m8 l8">
+				 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="routers/logout.php"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                         </li>
@@ -88,29 +151,22 @@ include 'includes/connect.php';
                 </div>
             </div>
             </li>
-            <li class="bold"><a href="dashboard.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Dashboard</a>
+            <li class="bold active"><a href="dashboard.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Dashboard</a>
             </li>
             </li>
             <li class="bold"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
                             <div class="collapsible-body">
                                 <ul>
-								<li class="<?php
-								if(!isset($_GET['status'])){
-										echo 'active';
-									}?>
-									"><a href="all-orders.php">All Orders</a>
+								<li><a href="all-orders.php">All Orders</a>
                                 </li>
 								<?php
 									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
 									while($row = mysqli_fetch_array($sql)){
-									if(isset($_GET['status'])){
-										$status = $row['status'];
-									}
-                                    echo '<li class='.(isset($_GET['status'])?($status == $_GET['status'] ? 'active' : ''): '').'><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                    echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
                                     </li>';
 									}
 									?>
@@ -149,13 +205,14 @@ include 'includes/connect.php';
 
       <!-- START CONTENT -->
       <section id="content">
+        
 
         <!--breadcrumbs start-->
         <div id="breadcrumbs-wrapper">
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">All Orders</h5>
+                <h5 class="breadcrumbs-title">Dashboard</h5>
               </div>
             </div>
           </div>
@@ -164,114 +221,80 @@ include 'includes/connect.php';
 
 
         <!--start container-->
-        <div class="container">
-          <p class="caption">List of orders by customers with details</p>
-          <div class="divider"></div>
-          <!--editableTable-->
-<div id="work-collections" class="seaction">
-             
-					<?php
-					if(isset($_GET['status'])){
-						$status = $_GET['status'];
-					}
-					else{
-						$status = '%';
-					}
-					$sql = mysqli_query($con, "SELECT * FROM orders WHERE status LIKE '$status';");
-					echo '<div class="row">
-                <div>
-                    <h4 class="header">List</h4>
-                    <ul id="issues-collection" class="collection">';
-					while($row = mysqli_fetch_array($sql))
-					{
-						$status = $row['status'];
-						$deleted = $row['deleted'];
-						echo '<li class="collection-item avatar">
-                              <i class="mdi-content-content-paste red circle"></i>
-                              <span class="collection-header">Order No. '.$row['id'].'</span>
-                              <p><strong>Date:</strong> '.$row['date'].'</p>
-                              <p><strong>Payment Type:</strong> '.$row['payment_type'].'</p>							  
-							  <p><strong>Status:</strong> '.($deleted ? $status : '
-							  <form method="post" action="routers/edit-orders.php">
-							    <input type="hidden" value="'.$row['id'].'" name="id">
-								<select name="status">
-								<option value="Yet to be delivered" '.($status=='Yet to be delivered' ? 'selected' : '').'>Yet to be delivered</option>
-								<option value="Delivered" '.($status=='Delivered' ? 'selected' : '').'>Delivered</option>
-								<option value="Cancelled by Admin" '.($status=='Cancelled by Admin' ? 'selected' : '').'>Cancelled by Admin</option>
-								<option value="Paused" '.($status=='Paused' ? 'selected' : '').'>Paused</option>								
-								</select>
-							  ').'</p>
-                              <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
-                              </li>';
-						$order_id = $row['id'];
-						$customer_id = $row['customer_id'];
-						$sql1 = mysqli_query($con, "SELECT * FROM order_details WHERE order_id = $order_id;");
-						$sql3 = mysqli_query($con, "SELECT * FROM users WHERE id = $customer_id;");
-							while($row3 = mysqli_fetch_array($sql3))
-							{
-							echo '<li class="collection-item">
+        <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
                             <div class="row">
-							<p><strong>Name: </strong>'.$row3['name'].'</p>
-							<p><strong>Address: </strong>'.$row['address'].'</p>
-							'.($row3['contact'] == '' ? '' : '<p><strong>Contact: </strong>'.$row3['contact'].'</p>').'	
-							'.($row3['email'] == '' ? '' : '<p><strong>Email: </strong>'.$row3['email'].'</p>').'		
-							'.(!empty($row['description']) ? '<p><strong>Note: </strong>'.$row['description'].'</p>' : '').'								
-                            </li>';							
-							}
-						while($row1 = mysqli_fetch_array($sql1))
-						{
-							$item_id = $row1['item_id'];
-							$sql2 = mysqli_query($con, "SELECT * FROM items WHERE id = $item_id;");
-							while($row2 = mysqli_fetch_array($sql2))
-								$item_name = $row2['name'];
-							echo '<li class="collection-item">
-                            <div class="row">
-                            <div class="col s7">
-                            <p class="collections-title"><strong>#'.$row1['item_id'].'</strong> '.$item_name.'</p>
+                                <div class="col-xs-3">
+                                    <i class="fa fa-cutlery fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">124</div>
+                                    <div>New Orders!</div>
+                                </div>
                             </div>
-                            <div class="col s2">
-                            <span>'.$row1['quantity'].' Pieces</span>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+    
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="col s3">
-                            <span>Rs. '.$row1['price'].'</span>
-                            </div>
-                            </div>
-                            </li>';
-						}
-								echo'<li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s7">
-                                                <p class="collections-title"> Total</p>
-                                            </div>
-                                            <div class="col s2">
-											<span> </span>
-                                            </div>
-                                            <div class="col s3">
-                                                <span><strong>Rs. '.$row['total'].'</strong></span>
-                                            </div>';										
-								if(!$deleted){
-								echo '<button class="btn waves-effect waves-light right submit" type="submit" name="action">Change Status
-                                              <i class="mdi-content-clear right"></i> 
-										</button>
-										</form>';
-								}
-								echo'</div></li>';
-					}
-					?>
-					</ul>
+                        </a>
+                    </div>
                 </div>
-              </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-calendar-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">13</div>
+                                    <div>New Reservations!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
+            
         </div>
+    </div>
+
+
         <!--end container-->
+
+        <!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="js/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/startmin.js"></script>
 
       </section>
       <!-- END CONTENT -->
     </div>
     <!-- END WRAPPER -->
 
-  </div>
-  <!-- END MAIN -->
 
 
 
@@ -294,6 +317,7 @@ include 'includes/connect.php';
     Scripts
     ================================================ -->
     
+    
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
     <!--angularjs-->
@@ -301,11 +325,98 @@ include 'includes/connect.php';
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>       
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- data-tables -->
+    <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
+    
+    <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
+    
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
+	    <script type="text/javascript">
+    $("#formValidate").validate({
+        rules: {
+			<?php
+			$result = mysqli_query($con, "SELECT * FROM items");
+			while($row = mysqli_fetch_array($result))
+			{
+				echo $row["id"].'_name:{
+				required: true,
+				minlength: 5,
+				maxlength: 20 
+				},';
+				echo $row["id"].'_price:{
+				required: true,	
+				min: 0
+				},';				
+			}
+		echo '},';
+		?>
+        messages: {
+			<?php
+			$result = mysqli_query($con, "SELECT * FROM items");
+			while($row = mysqli_fetch_array($result))
+			{  
+				echo $row["id"].'_name:{
+				required: "Ener item name",
+				minlength: "Minimum length is 5 characters",
+				maxlength: "Maximum length is 20 characters"
+				},';
+				echo $row["id"].'_price:{
+				required: "Ener price of item",
+				min: "Minimum item price is Rs. 0"
+				},';				
+			}
+		echo '},';
+		?>
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+    </script>
+    <script type="text/javascript">
+    $("#formValidate1").validate({
+        rules: {
+		name: {
+				required: true,
+				minlength: 5
+			},
+		price: {
+				required: true,
+				min: 0
+			},
+	},
+        messages: {
+		name: {
+				required: "Enter item name",
+				minlength: "Minimum length is 5 characters"
+			},
+		 price: {
+				required: "Enter item price",
+				minlength: "Minimum item price is Rs.0"
+			},
+	},
+		errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+    </script>
 </body>
 
 </html>
@@ -313,9 +424,9 @@ include 'includes/connect.php';
 	}
 	else
 	{
-		if($_SESSION['customer_id']==session_id())
+		if($_SESSION['customer_sid']==session_id())
 		{
-			header("location:orders.php");		
+			header("location:index.php");		
 		}
 		else{
 			header("location:login.php");

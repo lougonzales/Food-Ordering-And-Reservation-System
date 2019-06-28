@@ -116,14 +116,14 @@ include 'includes/wallet.php';
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-action-question-answer"></i> Tickets</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-action-question-answer"></i> Feedback</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li class="<?php
 								if(!isset($_GET['status'])){
 										echo 'active';
 									}?>
-									"><a href="all-tickets.php">All Tickets</a>
+									"><a href="all-tickets.php">All Feedback</a>
                                 </li>
 								<?php
 									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
@@ -214,8 +214,8 @@ include 'includes/wallet.php';
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span>Copyright © 2019 <a class="grey-text text-lighten-4" href="#" target="_blank">Avengirls</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Avengirls Software Solutions</a></span>
         </div>
     </div>
   </footer>
