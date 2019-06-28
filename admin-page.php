@@ -97,7 +97,7 @@ include 'includes/connect.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="pic/banner.jpg" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="pic/banner.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                 </div>
             </nav>
