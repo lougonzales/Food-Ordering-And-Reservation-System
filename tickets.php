@@ -157,6 +157,12 @@ include 'includes/wallet.php';
                         </li>
                     </ul>
                 </li>
+                </li>
+                <li class="bold"><a href="table.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Table Reservation</a>
+                </li>
+                </li>
+                <li class="bold"><a href="venue.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Venue Reservation</a>
+                </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-action-question-answer"></i> Feedback</a>
